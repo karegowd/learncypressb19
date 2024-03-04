@@ -1,12 +1,16 @@
+
+import addemployeedata from "../../fixtures/addemployee.json"
 describe('Verify add employee functionality', () => {
 
   it('Verify adding employee with valid details', () => {
 
     cy.visit("/web/index.php/auth/login")
 
-    cy.get('input[name="username2"]').type("Admin")
+    //cy.wait(30000)
 
-    cy.get("input[placeholder='Password']").type("admin123")
+    cy.get('input[name="username"]').type(Cypress.env('username'))
+
+    cy.get("input[placeholder='Password']").type(Cypress.env('password'))
 
     cy.get('button[type="submit"]').click()
 
@@ -15,9 +19,9 @@ describe('Verify add employee functionality', () => {
     cy.contains('PIM').click()
     cy.contains('Add Employee').click()
 
-    cy.get('input[name="firstName"]').type("Madhu")
+    cy.get('input[name="firstName"]').type(addemployeedata.firstname)
 
-    cy.get('input[name="lastName"]').type("N")
+    cy.get('input[name="lastName"]').type(addemployeedata.lastsame)
 
     cy.get('button[type="submit"]').click()
 
@@ -30,9 +34,9 @@ describe('Verify add employee functionality', () => {
 
     cy.visit("/web/index.php/auth/login")
 
-    cy.get('input[name="username"]').type("Admin")
+    cy.get('input[name="username"]').type(Cypress.env('username'))
 
-    cy.get("input[placeholder='Password']").type("admin123")
+    cy.get("input[placeholder='Password']").type(Cypress.env("password"))
 
     cy.get('button[type="submit"]').click()
 

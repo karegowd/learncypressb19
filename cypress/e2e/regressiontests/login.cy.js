@@ -1,12 +1,15 @@
+
+import logindata from "../../fixtures/logincreds.json"
+
 describe('Verify Login functionality', () => {
 
     it('Verify login with valid creds', () => {
 
         cy.visit("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login")
 
-        cy.get('input[name="username"]').type("Raju")
+        cy.get('input[name="username"]', {timeout:40000}).type(logindata.username)
 
-        cy.get("input[placeholder='Password']").type("admin123")
+        cy.get("input[placeholder='Password']").type(logindata.password)
 
         cy.get('button[type="submit"]').click()
 

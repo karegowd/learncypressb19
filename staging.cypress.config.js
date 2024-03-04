@@ -1,7 +1,6 @@
 const { defineConfig } = require("cypress");
 
 module.exports = defineConfig({
-  reporter: 'cypress-mochawesome-reporter',
   e2e: {
     baseUrl:"https://opensource-demo.orangehrmlive.com",
    //   viewportWidth: 1920,
@@ -16,12 +15,11 @@ module.exports = defineConfig({
     //specPattern: "cypress/e2e/**/*.raju.js",
     env:{
 
-        "username": "Gowda",
+        "username": "staginusername",
         "password": "admin123"
     },
     setupNodeEvents(on, config) {
       // implement node event listeners here
-      require('cypress-mochawesome-reporter/plugin')(on);
     },
   },
 });
