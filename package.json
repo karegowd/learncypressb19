@@ -4,14 +4,19 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "testInChrome": "npx cypress run --browser=chrome",
+    "raju": "npx cypress run --browser=edge --headed",
+    "testInfirefox": "npx cypress run --browser=firefox"
+
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "cypress": "^13.6.6"
+    "cypress": "^11.0.0"
   },
   "devDependencies": {
     "cypress-mochawesome-reporter": "^3.8.2"
   }
 }
+
+

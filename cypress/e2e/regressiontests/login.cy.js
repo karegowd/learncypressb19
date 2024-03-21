@@ -1,17 +1,45 @@
+import login from "../../pageObjects/loginPage.po"
 
 import logindata from "../../fixtures/logincreds.json"
 
+
 describe('Verify Login functionality', () => {
 
-    it('Verify login with valid creds', () => {
+    const creds = ["Admin", "admin123"]
+    after("Test ends", ()=>{
+
+        cy.log("test case execution completed")
+    })
+
+    beforeEach("Lauch url", ()=>{
+      //  cy.viewport(375,667)
 
         cy.visit("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login")
 
-        cy.get('input[name="username"]', {timeout:40000}).type(logindata.username)
+    })
 
-        cy.get("input[placeholder='Password']").type(logindata.password)
+    afterEach("Test completion", ()=>{
 
-        cy.get('button[type="submit"]').click()
+        cy.log("test case scussessfully executed")
+    })
+
+    before("Test Staarted", ()=>{
+
+        cy.log("test case execution started")
+    })
+
+
+    specify.only('Verify login with valid creds', () => {
+
+       
+
+        // cy.get(login.usernameInput(), { timeout: 40000 }).type(creds[0])
+
+        // cy.get(login.passwordInput()).type(creds[1])
+
+        // cy.get(login.loginBtn()).click()
+
+        login.loginwithcreds(creds[0],creds[1])
 
         cy.contains('Time at Work').should('be.visible')
 
@@ -29,46 +57,50 @@ describe('Verify Login functionality', () => {
 
     it('Verify login with valid username and invalid password', () => {
 
-        cy.visit("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login")
+  
 
-        cy.get('input[name="username"]').type("Admin")
+        cy.get(login.usernameInput()).type("Admin")
 
-        cy.get("input[placeholder='Password']").type("admiyg34uhtn123")
+        cy.get(login.passwordInput()).type("admiyg34uhtn123")
 
-        cy.get('button[type="submit"]').click()
+        cy.get(login.loginBtn()).click()
 
-        cy.contains('Invalid credentials').should('be.visible')
+        cy.contains(login.loginerrorMessage).should('be.visible')
 
 
     })
 
     it('Verify login with invalid username and valid password', () => {
 
-        cy.visit("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login")
+     
 
-        cy.get('input[name="username"]').type("fjrnekjg")
+     
 
-        cy.get("input[placeholder='Password']").type("admin123")
-
-        cy.get('button[type="submit"]').click()
-
-        cy.contains('Invalid credentials').should('be.visible')
+        cy.contains(login.loginerrorMessage).should('be.visible')
 
 
     })
 
 
-    it('Verify login with invalid username and invalid password', () => {
+    it.only('Verify login with invalid username and invalid password', () => {
 
-        cy.visit("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login")
+        let invalidcreds = {
 
-        cy.get('input[name="username"]').type("fjrnekjg")
+            invalidusername: "wiufjwriuhng",
+            invalidpassword: "kjewnf"
+        }
 
-        cy.get("input[placeholder='Password']").type("rufgy")
 
-        cy.get('button[type="submit"]').click()
 
-        cy.contains('Invalid credentials').should('be.visible')
+        // cy.get(login.credsinput("username")).type(invalidcreds.invalidusername)
+
+        // cy.get(login.credsinput("password")).type(invalidcreds.invalidpassword)
+
+        //cy.get(login.loginBtn()).click()
+
+        login.loginwithcreds("fbrehybgf","rbvfuhreufy")
+
+        cy.contains(login.loginerrorMessage).should('be.visible')
 
 
     })

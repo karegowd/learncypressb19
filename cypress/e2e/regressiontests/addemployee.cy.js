@@ -1,31 +1,53 @@
-
+import login from "../../pageObjects/loginPage.po"
+import dashboard from "../../pageObjects/dashbaordpage.po"
 import addemployeedata from "../../fixtures/addemployee.json"
+import addemployee from "../../pageObjects/addemployeepage.po"
 describe('Verify add employee functionality', () => {
 
-  it('Verify adding employee with valid details', () => {
+  const creds = {
+
+    username: "Admin",
+    password: "admin123"
+  }
+
+
+  const menuitems = {
+
+    menu1: "Admin",
+    menu2: "PIM",
+    menu3: "Time",
+    menu4: "Leave",
+    menu5: "Recruitment",
+    menu6: "My Info"
+  }
+
+  const arryitems = ["Admin", "PIM", "Time", "Leave", "Recruitment", "My Info"]
+  it.only('Verify adding employee with valid details', () => {
 
     cy.visit("/web/index.php/auth/login")
 
     //cy.wait(30000)
+    cy.get(login.orangeHrmLogo()).should("be.visible")
 
-    cy.get('input[name="username"]').type(Cypress.env('username'))
+    cy.get(login.usernameInput()).type(creds.username)
 
-    cy.get("input[placeholder='Password']").type(Cypress.env('password'))
+    cy.get(login.passwordInput()).type(Cypress.env('password'))
 
-    cy.get('button[type="submit"]').click()
+    cy.get(login.loginBtn()).click()
 
-    cy.contains('Time at Work').should('be.visible')
+    for (let item in menuitems) {
+      cy.contains(menuitems[item]).should('be.visible')
 
-    cy.contains('PIM').click()
-    cy.contains('Add Employee').click()
+    }
 
-    cy.get('input[name="firstName"]').type(addemployeedata.firstname)
+    for (let item of arryitems) {
+      cy.contains(item).should('be.visible')
 
-    cy.get('input[name="lastName"]').type(addemployeedata.lastsame)
+    }
+    cy.contains(dashboard.timeNworkHeader()).should('be.visible')
 
-    cy.get('button[type="submit"]').click()
-
-    cy.contains('Successfully Saved').should("be.visible")
+    cy.contains(dashboard.pimMenu()).click()
+    addemployee.addEmployee(addemployeedata.firstname, addemployeedata.lastsame)
 
   })
 
@@ -34,7 +56,7 @@ describe('Verify add employee functionality', () => {
 
     cy.visit("/web/index.php/auth/login")
 
-    cy.get('input[name="username"]').type(Cypress.env('username'))
+    cy.get('input[name="username2"]').type(Cypress.env('username'))
 
     cy.get("input[placeholder='Password']").type(Cypress.env("password"))
 
