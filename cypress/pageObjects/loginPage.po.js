@@ -8,7 +8,7 @@ class loginPage {
 
    usernameInput() {
 
-      return 'input[name="username"]'
+      return '//input[@name="username"]'
 
    }
 
@@ -33,7 +33,7 @@ class loginPage {
 
    loginwithcreds(username, password) {
 
-      cy.get(this.usernameInput()).type(username)
+      cy.xpath(this.usernameInput()).type(username)
 
       cy.get(this.passwordInput()).type(password)
 
