@@ -10,7 +10,7 @@ module.exports = defineConfig({
     retries:{openMode:1, runMode: 2},
     //pageLoadTimeout: 120000,
     defaultCommandTimeout: 20000,
-    watchForFileChanges: true,
+    watchForFileChanges: false,
     video: true,  
     //videoCompression: 51,
     videosFolder: "cypress/Raju",
