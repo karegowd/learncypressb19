@@ -11,6 +11,8 @@ module.exports = defineConfig({
     //pageLoadTimeout: 120000,
     defaultCommandTimeout: 20000,
     watchForFileChanges: false,
+    chromeWebSecurity: false,
+    experimentalSessionAndOrigin:true,
     video: true,  
     //videoCompression: 51,
     videosFolder: "cypress/Raju",

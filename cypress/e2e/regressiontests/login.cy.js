@@ -29,7 +29,7 @@ describe('Verify Login functionality', () => {
     })
 
 
-    specify.only('Verify login with valid creds', () => {
+    specify('Verify login with valid creds', () => {
 
        
 
@@ -59,7 +59,7 @@ describe('Verify Login functionality', () => {
 
   
 
-        cy.get(login.usernameInput()).type("Admin")
+        cy.xpath(login.usernameInput()).type("Admin")
 
         cy.get(login.passwordInput()).type("admiyg34uhtn123")
 
@@ -72,9 +72,11 @@ describe('Verify Login functionality', () => {
 
     it('Verify login with invalid username and valid password', () => {
 
-     
+        cy.xpath(login.usernameInput()).type("wfgehfuy")
 
-     
+        cy.get(login.passwordInput()).type("admin123")
+
+        cy.get(login.loginBtn()).click()
 
         cy.contains(login.loginerrorMessage).should('be.visible')
 
@@ -82,7 +84,7 @@ describe('Verify Login functionality', () => {
     })
 
 
-    it.only('Verify login with invalid username and invalid password', () => {
+    it('Verify login with invalid username and invalid password', () => {
 
         let invalidcreds = {
 
