@@ -51,9 +51,9 @@ describe('Automation - Working With Links', function () {
       var eletext = txt.text()
 
       cy.log(eletext)
-      // cy.writeFile('cypress/fixtures/module1/test3.txt', eletext)
+       cy.writeFile('cypress/fixtures/module2/test3.txt', eletext)
 
-      // cy.writeFile('cypress/fixtures/module1/flipcart2.json', { menutext: eletext });
+       cy.writeFile('cypress/fixtures/module2/flipcart2.json', { menutext: eletext });
       expect(eletext).to.equal("Mobiles")
 
     })

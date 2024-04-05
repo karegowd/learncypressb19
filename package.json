@@ -11,10 +11,14 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "cypress": "^11.0.0"
+    "cypress": "^11.0.0",
+    "cypress-downloadfile": "^1.2.3",
+    "xlsx": "^0.18.5"
   },
   "devDependencies": {
     "@4tw/cypress-drag-drop": "^2.2.5",
+    "@shelex/cypress-allure-plugin": "^2.40.2",
+    "cypress-file-upload": "^5.0.8",
     "cypress-mochawesome-reporter": "^3.8.2",
     "cypress-xpath": "^2.0.1"
   }

@@ -24,16 +24,7 @@ describe('Verify add employee functionality', () => {
   const arryitems = ["Admin", "PIM", "Time", "Leave", "Recruitment", "My Info"]
   it.only('Verify adding employee with valid details', () => {
 
-    cy.visit("/web/index.php/auth/login")
-
-    //cy.wait(30000)
-    cy.get(login.orangeHrmLogo()).should("be.visible")
-
-    cy.get(login.usernameInput()).type(creds.username)
-
-    cy.get(login.passwordInput()).type(Cypress.env('password'))
-
-    cy.get(login.loginBtn()).click()
+     cy.login("Admin", "admin123")
 
     for (let item in menuitems) {
       cy.contains(menuitems[item]).should('be.visible')
@@ -47,20 +38,15 @@ describe('Verify add employee functionality', () => {
     cy.contains(dashboard.timeNworkHeader()).should('be.visible')
 
     cy.contains(dashboard.pimMenu()).click()
-    addemployee.addEmployee(addemployeedata.firstname, addemployeedata.lastsame)
+    cy.Raju(addemployeedata.firstname, addemployeedata.lastsame)
+    cy.log("Test is completed ")
 
   })
 
 
-  it('Verify Mandotory fileds in Add employee page', () => {
+  it.only('Verify Mandotory fileds in Add employee page', () => {
 
-    cy.visit("/web/index.php/auth/login")
-
-    cy.get('input[name="username2"]').type(Cypress.env('username'))
-
-    cy.get("input[placeholder='Password']").type(Cypress.env("password"))
-
-    cy.get('button[type="submit"]').click()
+    cy.login(Cypress.env('username'), Cypress.env('password'))
 
     cy.contains('Time at Work').should('be.visible')
 
