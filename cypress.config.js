@@ -7,7 +7,7 @@ module.exports = defineConfig({
   reporter: 'cypress-mochawesome-reporter',
   
   e2e: {
-    baseUrl:"https://opensource-demo.orangehrmlive.com",
+    baseUrl:"https://opensource-demo.orangehrmlive.com/",
    //   viewportWidth: 1920,
    // viewportHeight: 1080,
    projectId: "x77kp8",
@@ -24,7 +24,9 @@ module.exports = defineConfig({
     env:{
 
         "username": "Admin",
-        "password": "admin123"
+        "password": "admin123",
+        "cookivalue": "orangehrm=672a1b4efb9759f5a008e5af2e7a708d",
+        "getemployees": 'web/index.php/api/v2/pim/employees?limit=50&offset=0&model=detailed&includeEmployees=onlyCurrent&sortField=employee.firstName&sortOrder=ASC'
     },
     setupNodeEvents(on, config) {
       allureWriter(on, config);

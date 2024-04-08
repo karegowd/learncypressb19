@@ -14,7 +14,7 @@ describe('Verify Login functionality', () => {
     beforeEach("Lauch url", ()=>{
       //  cy.viewport(375,667)
 
-        cy.visit("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login")
+        cy.visit("web/index.php/auth/login")
 
     })
 
