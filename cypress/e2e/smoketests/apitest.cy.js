@@ -1,5 +1,5 @@
 
-import data from '../fixtures/employeedata.json'
+import data from '../../fixtures/employeedata.json'
 describe('Understanding API test Automation', () => {
     it.only('Get request Automation', () => {
 

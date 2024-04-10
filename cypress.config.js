@@ -14,6 +14,7 @@ module.exports = defineConfig({
     retries:{openMode:1, runMode: 2},
     //pageLoadTimeout: 120000,
     defaultCommandTimeout: 20000,
+    specPattern: "**/*.feature",
     watchForFileChanges: false,
     chromeWebSecurity: false,
     experimentalSessionAndOrigin:true,
@@ -29,6 +30,8 @@ module.exports = defineConfig({
         "getemployees": 'web/index.php/api/v2/pim/employees?limit=50&offset=0&model=detailed&includeEmployees=onlyCurrent&sortField=employee.firstName&sortOrder=ASC'
     },
     setupNodeEvents(on, config) {
+
+      return require('./cypress/plugins/index.js')(on, config)
       allureWriter(on, config);
             return config;
       // implement node event listeners here

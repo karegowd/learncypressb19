@@ -1,4 +1,4 @@
-import regidata from '../fixtures/registermodule/register.json'
+import regidata from '../../fixtures/registermodule/register.json'
 describe('verify register functionality', () => {
 
     it('Uderstanding fixtures', () => {

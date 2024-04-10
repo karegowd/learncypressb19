@@ -1,7 +1,7 @@
 ///<reference types="cypress"/>
 
-import data from '../fixtures/ExceltoJson/user_data.json'
-import login from '../pageObjects/loginPage.po'
+import data from '../../fixtures/ExceltoJson/user_data.json'
+import login from '../../pageObjects/loginPage.po'
 
 describe('Automation - Working With Data driven testing json', function () {
 

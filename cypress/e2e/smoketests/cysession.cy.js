@@ -1,4 +1,4 @@
-import login from '../pageObjects/loginPage.po'
+import login from '../../pageObjects/loginPage.po'
 
 describe('Validate Orange HRM Login functionality', function () {
 
