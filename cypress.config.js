@@ -20,7 +20,7 @@ module.exports = defineConfig({
     experimentalSessionAndOrigin:true,
     video: true,  
     //videoCompression: 51,
-    videosFolder: "cypress/Raju",
+    videosFolder: "cypress/gowda",
     //specPattern: "cypress/e2e/**/*.raju.js",
     env:{
 
